@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiciSegura | Tu ruta, tu seguridad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            accent: '#10b981', // Emerald green
+                            light: '#34d399',
+                            surface: '#1e293b'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-white font-sans antialiased selection:bg-brand-accent selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 glass-panel border-b-0 border-white/5" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo: Apunta a la raíz (ruta limpia) -->
+                <a href="/" class="flex-shrink-0 flex items-center gap-2 cursor-pointer hover:opacity-80 transition">
+                    <div class="bg-brand-accent p-1.5 rounded-lg">
+                        <svg class="w-6 h-6 text-brand-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                        </svg>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight">Bici<span class="text-brand-accent">Segura</span></span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#features" class="hover:text-brand-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">Características</a>
+                        
+                        <!-- ENLACE AL MAPA: Ruta /mapa (sin .html) -->
+                        <a href="/mapa" class="hover:text-brand-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">Mapa en Vivo</a>
+                        
+                        <a href="#comunidad" class="hover:text-brand-accent transition-colors px-3 py-2 rounded-md text-sm font-medium">Comunidad</a>
+                        
+                        <!-- BOTÓN AL MAPA -->
+                        <a href="/mapa" class="bg-white text-brand-dark hover:bg-brand-accent hover:text-white transition-all duration-300 px-5 py-2 rounded-full font-bold text-sm shadow-lg shadow-brand-accent/20">
+                            Descargar App
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-brand-surface" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#features" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">Características</a>
+                <a href="/mapa" class="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700">Mapa en Vivo</a>
+                <a href="/mapa" class="block px-3 py-2 mt-4 text-center rounded-md text-base font-bold bg-brand-accent text-brand-dark">Descargar App</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center overflow-hidden bg-brand-dark pt-16">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1475727946784-2890c8fdb9e7?q=80&w=2000&auto=format&fit=crop" 
+                 alt="Ciudad de noche con luces" 
+                 class="w-full h-full object-cover opacity-30">
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/80 via-brand-dark/60 to-brand-dark"></div>
+            <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImEiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgNDBwNDAgNDB2NDB6IiBzdHJva2U9IiMzNDNkOTkiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYSkiLz48L3N2Zz4=')] opacity-20"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="text-center lg:text-left space-y-8">
+                <div class="inline-flex items-center px-3 py-1 rounded-full border border-brand-accent/30 bg-brand-accent/10 text-brand-accent text-sm font-medium mb-2">
+                    <span class="flex h-2 w-2 relative mr-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-accent"></span>
+                    </span>
+                    Disponible en tu ciudad
+                </div>
+                
+                <h1 class="text-5xl lg:text-7xl font-bold tracking-tight leading-tight">
+                    Domina la Ciudad. <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-cyan-400">Pedalea Seguro.</span>
+                </h1>
+                
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                    BiciSegura analiza el tráfico, la iluminación y la calidad del asfalto en tiempo real para ofrecerte las rutas más seguras.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+                    <!-- BOTÓN PRINCIPAL -->
+                    <a href="/mapa" class="group relative px-8 py-4 bg-brand-accent hover:bg-emerald-400 text-brand-dark font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] flex items-center justify-center gap-2">
+                        Explorar Mapa
+                        <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                    
+                    <!-- BOTÓN DEMO -->
+                    <a href="/mapa" class="px-8 py-4 bg-transparent border border-white/20 hover:bg-white/5 text-white font-semibold rounded-xl transition-all flex items-center justify-center gap-2">
+                        Ver Demo
+                    </a>
+                </div>
+            </div>
+
+            <div class="hidden lg:block relative animate-float">
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-brand-accent/20 rounded-full blur-[100px]"></div>
+                <div class="relative mx-auto border-gray-800 bg-gray-800 border-[14px] rounded-[2.5rem] h-[600px] w-[300px] shadow-2xl">
+                    <div class="rounded-[2rem] overflow-hidden w-full h-full bg-slate-900 relative">
+                        <div class="absolute inset-0 bg-slate-900 flex flex-col">
+                            <div class="p-6 pt-10 flex justify-between items-center z-10 bg-gradient-to-b from-slate-900 to-transparent">
+                                <div class="bg-slate-800/80 backdrop-blur p-2 rounded-full">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                                </div>
+                                <div class="bg-brand-accent text-brand-dark px-3 py-1 rounded-full text-xs font-bold">En ruta</div>
+                            </div>
+                            <div class="absolute inset-0 opacity-60">
+                                <svg class="w-full h-full" viewBox="0 0 300 600">
+                                    <path d="M50,600 L50,400 L120,350 L120,200 L250,100" stroke="#334155" stroke-width="8" fill="none"/>
+                                    <path d="M200,600 L200,450 L100,300" stroke="#334155" stroke-width="8" fill="none"/>
+                                    <path d="M150,550 L150,450 L80,400 L80,250 L180,150 L180,50" 
+                                          stroke="#10b981" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"
+                                          fill="none" class="drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]">
+                                        <animate attributeName="stroke-dasharray" from="0, 1000" to="1000, 0" duration="3s" repeatCount="indefinite" />
+                                    </path>
+                                    <circle cx="150" cy="550" r="6" fill="#3b82f6" />
+                                    <circle cx="180" cy="50" r="6" fill="#ef4444" />
+                                </svg>
+                            </div>
+                            <div class="mt-auto m-4 p-4 glass-panel rounded-xl z-10">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h3 class="font-bold text-white">Ruta Segura</h3>
+                                    <span class="text-brand-accent text-xs">98% Seguridad</span>
+                                </div>
+                                <div class="flex items-center gap-3 text-sm text-gray-300">
+                                    <span class="flex items-center gap-1"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> 18 min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-brand-surface relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-brand-accent font-semibold tracking-wide uppercase text-sm mb-2">Por qué elegirnos</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-white mb-4">Más que un GPS, es tu copiloto urbano.</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 rounded-2xl bg-brand-dark border border-white/5 hover:border-brand-accent/50 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Rutas Verificadas</h4>
+                    <p class="text-gray-400 leading-relaxed">Priorizamos calles con carriles bici segregados y zonas de bajo tráfico vehicular.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-brand-dark border border-white/5 hover:border-brand-accent/50 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-yellow-500/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Iluminación Inteligente</h4>
+                    <p class="text-gray-400 leading-relaxed">Evita calles oscuras. Nuestra data incluye el estado del alumbrado público.</p>
+                </div>
+                <div class="p-8 rounded-2xl bg-brand-dark border border-white/5 hover:border-brand-accent/50 transition-all duration-300 group hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-brand-accent/10 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Reportes Comunitarios</h4>
+                    <p class="text-gray-400 leading-relaxed">Alertas de baches, obras o accidentes generadas por otros ciclistas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section (Visual Only) -->
+    <section id="mapa" class="py-20 relative bg-brand-dark border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-10 flex flex-col md:flex-row justify-between items-end">
+                <div>
+                    <h2 class="text-brand-accent font-semibold tracking-wide uppercase text-sm mb-2">Demo en Vivo</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-white">Explora el Mapa</h3>
+                </div>
+                
+                <!-- BOTÓN SECCIÓN INFERIOR -->
+                <a href="/mapa" class="px-6 py-3 bg-brand-surface border border-white/10 rounded-lg text-sm hover:border-brand-accent/50 transition flex items-center gap-2">
+                    <svg class="w-4 h-4 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+                    Ver Mapa Completo
+                </a>
+            </div>
+            
+            <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 h-[500px] w-full bg-slate-800 flex items-center justify-center">
+                <!-- Static CSS Map Visualization -->
+                <div class="absolute inset-0 opacity-20 bg-[url('https://upload.wikimedia.org/wikipedia/commons/e/ec/World_map_blank_without_borders.svg')] bg-cover bg-center"></div>
+                <div class="text-center p-8 z-10">
+                    <div class="w-16 h-16 bg-brand-accent/20 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+                        <svg class="w-8 h-8 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-2">Mapa en Tiempo Real</h3>
+                    <p class="text-gray-400 mb-6">Interactúa con rutas, zonas seguras y reportes de la comunidad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-surface border-t border-white/10 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-500">© 2024 BiciSegura. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-brand-dark/95', 'shadow-lg');
+            } else {
+                navbar.classList.remove('bg-brand-dark/95', 'shadow-lg');
+            }
+        });
+    </script>
+</body>
+</html>
